@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-11-03T09:07:41Z",
+  "kpi_label": "% of postings mentioning 'AI'",
+  "kpi_value": 0.417,
+  "n_postings_analyzed": 12,
+  "n_matching": 5,
+  "top_skills": [
+    {
+      "skill": "AI",
+      "count": 4
+    },
+    {
+      "skill": "Generative AI",
+      "count": 3
+    },
+    {
+      "skill": "AWS",
+      "count": 3
+    },
+    {
+      "skill": "Python",
+      "count": 3
+    },
+    {
+      "skill": "360° video",
+      "count": 2
+    },
+    {
+      "skill": "SaaS",
+      "count": 2
+    },
+    {
+      "skill": "Docker",
+      "count": 2
+    },
+    {
+      "skill": "Computer Vision",
+      "count": 1
+    },
+    {
+      "skill": "Computer vision",
+      "count": 1
+    },
+    {
+      "skill": "HIL",
+      "count": 1
+    }
+  ],
+  "avg_skills_per_posting": 6.25
+}
