@@ -6,9 +6,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-  #kpi-card { padding: 1rem; border: 2px solid #0d7c9e; border-radius: 8px; }
-  #kpi-card .value { font-size: 2rem; font-weight: bold; color: #0d7c9e; }
-  #kpi-card .label { font-size: 0.9rem; color: #666; }
+  .card { padding: 1rem; border: 2px solid #0d7c9e; border-radius: 8px; margin-bottom: 1rem; }
+  .card .value { font-size: 2rem; font-weight: bold; color: #0d7c9e; }
+  .card .label { font-size: 0.9rem; color: #666; }
   canvas { margin-top: 1.5rem; }
   #updated { color: #666; font-size: 0.85rem; }
 </style>
@@ -16,7 +16,8 @@
 <body>
   <h1>Scraping to KPI lab</h1>
   <p>One real KPI, computed from LLM-extracted skills across real scraped postings — see <code>data/extracted.json</code> and <code>compute_kpi.py</code>.</p>
-  <div id="kpi-card">Loading...</div>
+  <div id="kpi-card" class="card">Loading...</div>
+  <div id="cloud-card" class="card" hidden></div>
   <canvas id="skillsChart" height="320"></canvas>
   <p id="updated"></p>
 
@@ -34,6 +35,17 @@ fetch('data/kpi.json')
       <div class="label">${data.kpi_label} (${data.n_matching} of ${data.n_postings_analyzed} postings)</div>
       <div class="label">Average ${data.avg_skills_per_posting} distinct skills extracted per posting</div>
     `;
+
+    const cloud = data.cloud_kpi;
+    if (cloud) {
+      const card = document.getElementById('cloud-card');
+      card.innerHTML = `
+        <div class="value">${(cloud.kpi_value * 100).toFixed(0)}%</div>
+        <div class="label">${cloud.kpi_label} (${cloud.n_matching} of ${cloud.n_postings_distinct} distinct postings, ${cloud.n_duplicates_removed} duplicate removed)</div>
+        <div class="label">${cloud.by_provider.map(p => `${p.provider}: ${p.count}`).join(' · ')}</div>
+      `;
+      card.hidden = false;
+    }
 
     const top = data.top_skills || [];
     new Chart(document.getElementById('skillsChart'), {

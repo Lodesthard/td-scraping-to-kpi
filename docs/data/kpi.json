@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T09:07:41Z",
+  "generated_at": "2026-11-03T09:26:05Z",
   "kpi_label": "% of postings mentioning 'AI'",
   "kpi_value": 0.417,
   "n_postings_analyzed": 12,
@@ -46,5 +46,26 @@
       "count": 1
     }
   ],
-  "avg_skills_per_posting": 6.25
+  "avg_skills_per_posting": 6.25,
+  "cloud_kpi": {
+    "kpi_label": "% of distinct postings requiring at least one cloud provider (AWS, Azure, GCP)",
+    "kpi_value": 0.273,
+    "n_postings_distinct": 11,
+    "n_duplicates_removed": 1,
+    "n_matching": 3,
+    "by_provider": [
+      {
+        "provider": "AWS",
+        "count": 2
+      },
+      {
+        "provider": "Azure",
+        "count": 1
+      },
+      {
+        "provider": "GCP",
+        "count": 0
+      }
+    ]
+  }
 }
