@@ -85,7 +85,18 @@ erreurs réelles :
   qu'il n'apparaît pas dans les 1 500 caractères envoyés au modèle. C'est juste
   dans les faits (le texte complet le mentionne), mais le modèle l'a deviné, pas lu.
 
-*Erreur relevée par le camarade lors de l'échange : à compléter.*
+**Quatrième erreur, sur les fautes de frappe des annonces :** le modèle les traite
+de façon incohérente.
+- Chez Solutionix, le texte source dit « **Azrue** Active Directory » : le modèle
+  a corrigé en silence et renvoyé « Azure Active Directory ».
+- Chez Hilti, le texte dit « AWS **Bedrocks** » (puis « AWS Bedrock » plus loin) :
+  le modèle a recopié la faute, « Bedrocks », et sans le préfixe « AWS ».
+
+Dans le premier cas, la sortie ne recopie plus le texte : on ne peut plus vérifier
+mot pour mot qu'une compétence vient de l'annonce. Dans le second cas, « Bedrocks »
+et « Bedrock » deviendraient deux compétences distinctes dès qu'une autre annonce
+écrit correctement le nom. Seule une relecture de `extracted.json` face au texte
+source le montre ; dans `kpi.json`, les deux erreurs sont invisibles.
 
 ## 6. Ma compétence cible, et quel KPI je croirais (CM2)
 
